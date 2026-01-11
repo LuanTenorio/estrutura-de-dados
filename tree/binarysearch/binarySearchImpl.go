@@ -52,3 +52,27 @@ func (bst *BinarySearchTreeImpl) Insert(key int, data interface{}) {
 		newNode.Father.Right = newNode
 	}
 }
+
+func (sbt *BinarySearchTreeImpl) searchNode(key int) *treeNode {
+	curNode := sbt.Root
+
+	for curNode != nil && curNode.Key != key {
+		if curNode.Key > key {
+			curNode = curNode.Right
+		} else {
+			curNode = curNode.Left
+		}
+	}
+
+	return curNode
+}
+
+func (sbt *BinarySearchTreeImpl) Search(key int) interface{} {
+	node := sbt.searchNode(key)
+
+	if node == nil {
+		return nil
+	}
+
+	return node.Data
+}

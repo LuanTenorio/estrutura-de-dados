@@ -58,9 +58,9 @@ func (sbt *BinarySearchTreeImpl) searchNode(key int) *treeNode {
 
 	for curNode != nil && curNode.Key != key {
 		if curNode.Key > key {
-			curNode = curNode.Right
-		} else {
 			curNode = curNode.Left
+		} else {
+			curNode = curNode.Right
 		}
 	}
 

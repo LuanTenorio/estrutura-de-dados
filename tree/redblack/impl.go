@@ -11,7 +11,6 @@ type treeNode struct {
 	Father *treeNode
 	color  uint8
 	Key    int
-	Data   interface{}
 }
 
 type RedBlackTreeImpl struct {
@@ -22,6 +21,15 @@ type RedBlackTreeImpl struct {
 func NewRBT() RedBlackTree {
 	nilNode := &treeNode{color: black}
 	return &RedBlackTreeImpl{nilNode: nilNode}
+}
+
+func (rbt *RedBlackTreeImpl) newNode(key int) *treeNode {
+	return &treeNode{
+		color: red,
+		Left:  rbt.nilNode,
+		Right: rbt.nilNode,
+		Key:   key,
+	}
 }
 
 func (rbt *RedBlackTreeImpl) isNilNode(node *treeNode) bool {
@@ -64,4 +72,36 @@ func (rbt *RedBlackTreeImpl) rightRotate(x *treeNode) {
 	}
 
 	y.Father, y.Right, x.Father = x.Father, x, y
+}
+
+func (rbt *RedBlackTreeImpl) insertFixup(x *treeNode) {
+
+}
+
+func (rbt *RedBlackTreeImpl) insert(key int) {
+	newNode := rbt.newNode(key)
+	y := rbt.nilNode
+	x := rbt.root
+
+	for !rbt.isNilNode(x) {
+		y = x
+
+		if newNode.Key > x.Key {
+			x = x.Right
+		} else {
+			x = x.Left
+		}
+	}
+
+	newNode.Father = y
+
+	if rbt.isNilNode(y) {
+		rbt.root = newNode
+	} else if newNode.Key > newNode.Father.Key {
+		y.Right = newNode
+	} else {
+		y.Left = newNode
+	}
+
+	rbt.insertFixup(newNode)
 }

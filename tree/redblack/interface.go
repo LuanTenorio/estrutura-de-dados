@@ -1,19 +1,4 @@
 package redblack
 
-const (
-	red uint8 = iota
-	black
-)
-
-type treeNode struct {
-	Left   *treeNode
-	Right  *treeNode
-	Father *treeNode
-	color  uint8
-	Key    int
-	Data   interface{}
-}
-
-type RedBlackTree struct {
-	Root *treeNode
+type RedBlackTree interface {
 }

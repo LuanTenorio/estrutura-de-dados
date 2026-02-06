@@ -10,3 +10,7 @@ Livros guia: Algoritmos e Estruturas de Dados em Linguagem C do André Ricardo B
 
 Livro: Algoritmos: Teoria e Prática
 Artigo: A Dichromatic framework for balanced trees
+
+## Programação dinâmica
+
+Livro: The algorithm Design Manual - capítulo 8

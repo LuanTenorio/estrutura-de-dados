@@ -44,3 +44,20 @@ func MemoizedMaxStems(prices []int, n int) int {
 
 	return memoizedMaxStemsAux(prices, n, mem)
 }
+
+func BottomToTopMaxSteams(prices []int, n int) int {
+	mem := slices.Repeat([]int{math.MinInt}, n+1)
+
+	mem[0] = 0
+
+	for i := 1; i <= n; i++ {
+		q := math.MinInt
+		for j := 1; j <= i; j++ {
+			q = max(q, prices[j-1]+mem[i-j])
+		}
+
+		mem[i] = q
+	}
+
+	return mem[n]
+}

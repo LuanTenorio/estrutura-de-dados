@@ -13,4 +13,4 @@ Artigo: A Dichromatic framework for balanced trees
 
 ## Programação dinâmica
 
-Livro: The algorithm Design Manual - capítulo 8
+Livro: Algoritmos: Teoria e Prática - 15; The algorithm Design Manual - capítulo 8.1
